@@ -321,5 +321,7 @@ The main goal of this project is to build a Machine Learning system capable of e
 
 Electrical & Electronic Engineering | Artificial Intelligence | Machine Learning
 
-GitHub: [El-adghamF90](https://github.com/El-adghamF90)
+GitHub: [El-adghamF90](https://github.com/El-adghamF90)  git add .
+git commit -m "Update HOME_VALUE project"
+git push
 LinkedIn: [Mahmoud_EL-Adgham](https://www.linkedin.com/in/mahmoud-el-adgham/)
