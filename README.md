@@ -1,146 +1,324 @@
-# House Price Prediction — End-to-End ML Web App
+# 🏠 House Price Prediction
 
-An end-to-end machine learning project that predicts Indian house prices from property details, built as part of the ITI internship final project.
+An AI-powered House Price Prediction system that uses Machine Learning to estimate the price of residential properties based on their characteristics.
 
-## Overview
+The project uses a trained Machine Learning model and an interactive **Streamlit web application** where users can enter property information and receive an estimated property value.
 
-This project takes a messy, real-world Kaggle dataset of ~187,000 Indian property listings, cleans it, trains a regression model, and serves predictions through a web app:
+---
 
-- **Jupyter Notebook** — cleans the data, engineers features, trains and compares 2 models
-- **FastAPI backend** — loads the trained model and serves predictions via REST API
-- **React frontend** — a form where users enter property details and see a predicted price
+## 📌 Project Overview
 
-## Architecture
+House prices depend on several factors such as location, carpet area, floor number, number of bathrooms, balconies, furnishing status, transaction type, ownership, and property facing.
 
+This project applies Machine Learning to learn the relationship between these property features and their prices.
 
-## Tech Stack
+The system allows a user to:
 
-- **Data/ML:** Python, pandas, scikit-learn, matplotlib, seaborn
-- **Backend:** FastAPI, Pydantic, Uvicorn
-- **Frontend:** React, TypeScript, Vite, React Router
+- Enter property details through an interactive web interface.
+- Select the property location.
+- Enter the carpet area.
+- Specify the floor number.
+- Select the number of bathrooms and balconies.
+- Select furnishing status.
+- Select transaction type.
+- Select ownership type.
+- Select the property facing.
+- Receive an estimated house price from the trained Machine Learning model.
 
-## Project Structure
+---
 
+## 🧠 Machine Learning Model
 
-## Dataset
+The project uses a **Random Forest Regressor** for house price prediction.
 
-**House Price** by Juhi Bhojani — https://www.kaggle.com/datasets/juhibhojani/house-price
+### Main Features
 
-### Download instructions
+The model uses the following features:
+
+- Carpet Area (sqft)
+- Floor Number
+- Bathroom
+- Balcony
+- Location
+- Furnishing
+- Transaction
+- Ownership
+- Facing
+
+The dataset contains approximately **187,000 property listings** from the Indian real-estate market.
+
+During preprocessing, property prices and area values are cleaned and converted into numerical values. Locations with lower frequencies are grouped into an `other` category, while selected categorical features are encoded for Machine Learning.
+
+### Current Model Performance
+
+The original model achieved:
+
+| Metric | Value |
+|---|---:|
+| MAE | 1,354,452.18 |
+| RMSE | 5,705,804.46 |
+| R² Score | 0.8260 |
+
+The model is being further improved through preprocessing and Random Forest hyperparameter tuning.
+
+---
+
+## 🌐 Web Application
+
+The project includes an interactive **Streamlit** web application designed to provide a simple and modern interface for house price prediction.
+
+The website allows users to enter the required property information and obtain the predicted property value directly through the browser.
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![Home Page](screenshots/Home_Page.png)
+
+### 📝 Input Predictions
+
+![Input Predictions](screenshots/Input_Predictions.png)
+
+### 💰 The Predictive Value
+
+![The Predictive Value](screenshots/The_Predictive_Value.png)
+
+---
+
+## 🚀 How to Run the Website
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/El-adghamF90/House-Price-Prediction.git
+```
+
+Then move into the project folder:
+
+```bash
+cd House-Price-Prediction
+```
+
+### 2. Install the Required Libraries
+
+Make sure Python is installed on your computer.
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+If Streamlit is not already installed, install it using:
+
+```bash
+pip install streamlit
+```
+
+### 3. Run the Streamlit Website
+
+From the **main project folder**, run:
+
+```bash
+streamlit run app.py
+```
+
+For example, on Windows:
+
+```powershell
+cd C:\Users\HP\house-price-project
+streamlit run app.py
+```
+
+### 4. Open the Website
+
+After running the command, Streamlit will start a local web server.
+
+The terminal will normally display an address similar to:
+
+```text
+Local URL: http://localhost:8501
+```
+
+Open this address in your web browser:
+
+```text
+http://localhost:8501
+```
+
+The House Price Prediction website will then be available locally.
+
+> **Note:** The website is now powered by Streamlit. The old FastAPI/React instructions are no longer required to run the web application.
+
+---
+
+## 📊 Dataset
+
+**Dataset:** House Price by Juhi Bhojani
+
+The project uses the [House Price dataset by Juhi Bhojani](https://www.kaggle.com/datasets/juhibhojani/house-price), which contains Indian residential property listings and their corresponding prices.
+
+### Downloading the Dataset
+
+The dataset can be obtained from Kaggle using either of the following methods.
+
+### Option A — Download Manually
+
+1. Open the [House Price dataset by Juhi Bhojani](https://www.kaggle.com/datasets/juhibhojani/house-price).
+2. Click **Download** on the dataset page.
+3. Unzip the downloaded file.
+4. Place the CSV file inside:
+
+```text
+notebooks/data/
+```
+
+The expected location is:
+
+```text
+notebooks/data/house_prices.csv
+```
+
+### Option B — Kaggle CLI
+
+Install the Kaggle CLI:
 
 ```bash
 pip install kaggle
-kaggle auth login
+```
+
+Then download and extract the dataset directly into the project:
+
+```bash
 kaggle datasets download -d juhibhojani/house-price -p notebooks/data --unzip
 ```
 
-## Setup — Notebook
+After downloading, make sure the CSV file is located inside:
 
-```bash
-pip install pandas numpy scikit-learn matplotlib seaborn joblib
+```text
+notebooks/data/
 ```
 
-Run `notebooks/house_price_model.ipynb` top to bottom. This generates `house_price.pkl` and `locations.json`, which you then copy into `backend/models/` and `backend/app/` respectively.
+The notebook loads the dataset using:
 
-## Setup — Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python -m uvicorn app.main:app --reload
+```python
+df = pd.read_csv("data/house_prices.csv")
 ```
 
-Once running, the backend is available at:
-- **API:** http://localhost:8000
-- **Interactive docs:** http://localhost:8000/docs
+when the notebook is run from the `notebooks/` directory.
 
-No environment variables are required for the backend.
+---
 
-### API Reference
+## 🏡 How to Use the Website
 
-The backend exposes two endpoints.
+1. Open the Streamlit website.
+2. Click **START PREDICTION**.
+3. Enter the property information.
+4. Select the property location.
+5. Enter the carpet area in square feet.
+6. Select the floor number.
+7. Enter the number of bathrooms.
+8. Enter the number of balconies.
+9. Select the furnishing status.
+10. Select the transaction type.
+11. Select the ownership type.
+12. Select the property facing.
+13. Submit the prediction.
+14. The trained Machine Learning model will calculate and display the estimated property value.
 
-**1. Health check** — confirms the server is running.
+---
 
-macOS / Linux:
-```bash
-curl http://localhost:8000/health
+## 📂 Project Structure
+
+```text
+House-Price-Prediction/
+│
+├── app.py
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── preprocessing.py
+│   │   └── locations.json
+│   │
+│   └── models/
+│       └── house_price.pkl
+│
+├── notebooks/
+│   ├── data/
+│   │   └── house_prices.csv
+│   │
+│   └── house_price_model.ipynb
+│
+├── screenshots/
+│   ├── Home_Page.png
+│   ├── Input_Predictions.png
+│   └── The_Predictive_Value.png
+│
+├── requirements.txt
+│
+└── README.md
 ```
 
-Windows (PowerShell):
-```powershell
-curl.exe http://localhost:8000/health
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Streamlit
+- Random Forest
+- Jupyter Notebook
+- Git & GitHub
+
+---
+
+## 🔄 Machine Learning Workflow
+
+```text
+Dataset
+   ↓
+Data Cleaning
+   ↓
+Feature Extraction
+   ↓
+Handling Missing Values
+   ↓
+Outlier Filtering
+   ↓
+Feature Engineering
+   ↓
+Categorical Encoding
+   ↓
+Train / Test Split
+   ↓
+Random Forest Regression
+   ↓
+Model Evaluation
+   ↓
+Saved Model
+   ↓
+Streamlit Web Application
+   ↓
+House Price Prediction
 ```
 
-Returns:
-```json
-{"status": "ok"}
-```
+---
 
-**2. Price prediction** — takes property details, returns a predicted price.
+## 🎯 Project Goal
 
-macOS / Linux:
-```bash
-curl -X POST http://localhost:8000/predict \
-  -H "Content-Type: application/json" \
-  -d '{"location": "mumbai", "carpet_area_sqft": 800, "floor_num": 3, "bathroom": 2, "balcony": 1, "furnishing": "Furnished", "transaction": "Resale", "ownership": "Freehold", "facing": "East"}'
-```
+The main goal of this project is to build a Machine Learning system capable of estimating residential property prices from real-world property information and to make the prediction process accessible through an interactive web application.
 
-Windows (PowerShell):
-```powershell
-curl.exe -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{\"location\": \"mumbai\", \"carpet_area_sqft\": 800, \"floor_num\": 3, \"bathroom\": 2, \"balcony\": 1, \"furnishing\": \"Furnished\", \"transaction\": \"Resale\", \"ownership\": \"Freehold\", \"facing\": \"East\"}'
-```
+---
 
-Returns:
-```json
-{"predicted_price": 34381000.0}
-```
-## Setup — Frontend
+## 👨‍💻 Author
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+**Mahmoud El-Adgham**
 
-Once running, open the app at:
-- **http://localhost:5173**
+Electrical & Electronic Engineering | Artificial Intelligence | Machine Learning
 
-### Environment Variables
-
-The frontend needs one environment variable, already set in `.env.example`:
-
-| Variable | Description | Example |
-|---|---|---|
-| `VITE_API_BASE_URL` | The backend's base URL | `http://localhost:8000` |
-
-Copy `.env.example` to `.env` before running the app:
-
-macOS / Linux:
-```bash
-cp .env.example .env
-```
-
-Windows (PowerShell):
-```powershell
-copy .env.example .env
-```
-
-## Model Metrics (Random Forest — chosen model)
-
-| Metric | Linear Regression | Random Forest |
-|---|---|---|
-| MAE | 4,687,514.53 | 1,354,452.18 |
-| RMSE | 8,890,564.45 | 5,705,804.46 |
-| R² | 0.5776 | 0.8260 |
-
-Random Forest was selected as the final model due to its substantially higher R² and lower error, reflecting its ability to capture non-linear relationships between property features and price.
-
-## Screenshots
-
-### Home Page
-![Home Page](screenshots/homepage.png)
-
-### Result Page
-![Result Page](screenshots/result.png)
-
+GitHub: [El-adghamF90](https://github.com/El-adghamF90)
