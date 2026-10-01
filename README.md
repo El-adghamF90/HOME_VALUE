@@ -1,4 +1,4 @@
-# 🏠 House Price Prediction
+# 🏠 HOME_VALUE
 
 An AI-powered House Price Prediction system that uses Machine Learning to estimate the price of residential properties based on their characteristics.
 
@@ -65,7 +65,7 @@ The model is being further improved through preprocessing and Random Forest hype
 
 ## 🌐 Web Application
 
-The project includes an interactive **Streamlit** web application designed to provide a simple and modern interface for house price prediction.
+The project includes an interactive **Streamlit** web application designed to provide a modern interface for house price prediction.
 
 The website allows users to enter the required property information and obtain the predicted property value directly through the browser.
 
@@ -92,13 +92,13 @@ The website allows users to enter the required property information and obtain t
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/El-adghamF90/House-Price-Prediction.git
+git clone https://github.com/El-adghamF90/HOME_VALUE.git
 ```
 
 Then move into the project folder:
 
 ```bash
-cd House-Price-Prediction
+cd HOME_VALUE
 ```
 
 ### 2. Install the Required Libraries
@@ -148,9 +148,9 @@ Open this address in your web browser:
 http://localhost:8501
 ```
 
-The House Price Prediction website will then be available locally.
+The **HOME_VALUE** website will then be available locally.
 
-> **Note:** The website is now powered by Streamlit. The old FastAPI/React instructions are no longer required to run the web application.
+> **Note:** The website is powered by Streamlit. The previous FastAPI/React instructions are no longer required to run the web application.
 
 ---
 
@@ -233,7 +233,7 @@ when the notebook is run from the `notebooks/` directory.
 ## 📂 Project Structure
 
 ```text
-House-Price-Prediction/
+HOME_VALUE/
 │
 ├── app.py
 │
