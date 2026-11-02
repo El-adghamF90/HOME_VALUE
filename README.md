@@ -1,29 +1,28 @@
-# 🏠 HOME_VALUE
+# 🏡 HOME_VALUE: Real Estate Price Prediction Web App
 
-An AI-powered House Price Prediction system that uses Machine Learning to estimate the price of residential properties based on their characteristics.
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-The project uses a trained Machine Learning model and an interactive **Streamlit web application** where users can enter property information and receive an estimated property value.
+An end-to-end Machine Learning pipeline and interactive **Streamlit web application** that estimates residential property market values based on structural, spatial, and socio-economic features.
+
+Developed as part of the **Information Technology Institute (ITI) AI & ML Foundation Program**.
 
 ---
 
-## 📌 Project Overview
+## 📌 Features
 
-House prices depend on several factors such as location, carpet area, floor number, number of bathrooms, balconies, furnishing status, transaction type, ownership, and property facing.
-
-This project applies Machine Learning to learn the relationship between these property features and their prices.
-
-The system allows a user to:
-
-- Enter property details through an interactive web interface.
-- Select the property location.
-- Enter the carpet area.
-- Specify the floor number.
-- Select the number of bathrooms and balconies.
-- Select furnishing status.
-- Select transaction type.
-- Select ownership type.
-- Select the property facing.
-- Receive an estimated house price from the trained Machine Learning model.
+- **Interactive Web UI**: Built with Streamlit to enable users to easily input property parameters and receive instant market estimations.
+- **Data Preprocessing & Cleaning**: Automated handling of missing values, numerical conversion of area/price fields, outlier filtering, and categorical feature encoding.
+- **Supervised Regression Modeling**: Utilizes a trained **Random Forest Regressor** trained on real-world property listings.
+- **Comprehensive Feature Vector**: Evaluates property valuation based on 9 core attributes:
+  - Location & Carpet Area (sqft)
+  - Floor Number, Bathrooms, and Balconies
+  - Furnishing Status & Facing Direction
+  - Ownership & Transaction Type
 
 ---
 
@@ -63,6 +62,25 @@ The model is being further improved through preprocessing and Random Forest hype
 
 ---
 
+## 🛠️ System Architecture & Workflow
+
+```text
+┌────────────────────────┐     ┌───────────────────────────────────┐     ┌──────────────────────────────┐
+│ Kaggle Real Estate     │ ──> │ Data Cleaning & Missing Value     │ ──> │ Feature Engineering &        │
+│ Dataset (~187k Rows)   │     │ Imputation                        │     │ Categorical Encoding         │
+└────────────────────────┘     └───────────────────────────────────┘     └──────────────────────────────┘
+                                                                                        │
+                                                                                        ▼
+┌────────────────────────┐     ┌───────────────────────────────────┐     ┌──────────────────────────────┐
+│ Streamlit Web App      │ <── │ Saved Serialized Model            │ <── │ Random Forest Regressor      │
+│ (Interactive Inference)│     │ (`house_price.pkl`)               │     │ Training & Evaluation        │
+└────────────────────────┘     └───────────────────────────────────┘     └──────────────────────────────┘
+```
+
+
+---
+
+
 ## 🌐 Web Application
 
 The project includes an interactive **Streamlit** web application designed to provide a modern interface for house price prediction.
@@ -84,6 +102,16 @@ The website allows users to enter the required property information and obtain t
 ### 💰 The Predictive Value
 
 ![The Predictive Value](screenshots/The_Predictive_Value.png)
+
+---
+
+## ⚙️ Tech Stack
+
+- **Language:** Python 3.9+
+- **Machine Learning:** scikit-learn
+- **Data Processing & Analytics:** Pandas, NumPy
+- **Web Interface:** Streamlit
+- **Development & Tools:** Jupyter Notebook, Git, GitHub
 
 ---
 
@@ -149,9 +177,6 @@ http://localhost:8501
 ```
 
 The **HOME_VALUE** website will then be available locally.
-
-> **Note:** The website is powered by Streamlit. The previous FastAPI/React instructions are no longer required to run the web application.
-
 ---
 
 ## 📊 Dataset
@@ -309,17 +334,18 @@ House Price Prediction
 
 ---
 
-## 🎯 Project Goal
+---
 
-The main goal of this project is to build a Machine Learning system capable of estimating residential property prices from real-world property information and to make the prediction process accessible through an interactive web application.
+## 📜 Certification & Context
+
+Developed as part of the **AI & Machine Learning Foundation Level 1** program at the **Information Technology Institute (ITI)**, Knowledge City, New Capital, Cairo, Egypt.
 
 ---
 
 ## 👨‍💻 Author
 
-**Mahmoud El-Adgham**
+**Mahmoud El-Adgham**  
+Electrical & Electronic Engineering | AI & Machine Learning  
 
-Electrical & Electronic Engineering | Artificial Intelligence | Machine Learning
-
-GitHub: [El-adghamF90](https://github.com/El-adghamF90)  
-LinkedIn: [Mahmoud_EL-Adgham](https://www.linkedin.com/in/mahmoud-el-adgham/)
+* **GitHub:** [El-adghamF90](https://github.com/El-adghamF90)
+* **LinkedIn:** [Mahmoud EL-Adgham](https://www.linkedin.com/in/mahmoud-el-adgham/)
